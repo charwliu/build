@@ -14,7 +14,7 @@ finish() {
 trap finish ERR
 
 if [ $# != 1 ]; then
-	BOARD=rk3288-evb
+	BOARD=rk3588-nanopi6
 fi
 
 [ ! -d ${OUT} ] && mkdir ${OUT}
@@ -31,6 +31,7 @@ echo -e "\e[36m Building kernel for ${BOARD} board! \e[0m"
 KERNEL_VERSION=$(cd ${LOCALPATH}/kernel && make kernelversion)
 echo $KERNEL_VERSION
 
+echo ${DTB_MAINLINE}
 if version_gt "${KERNEL_VERSION}" "5.11"; then
 	if [ "${DTB_MAINLINE}" ]; then
 		DTB=${DTB_MAINLINE}
@@ -46,6 +47,7 @@ cd ${LOCALPATH}/kernel
 
 make -j8
 cd ${LOCALPATH}
+
 
 if [ "${ARCH}" == "arm" ]; then
 	cp ${LOCALPATH}/kernel/arch/arm/boot/zImage ${OUT}/kernel/

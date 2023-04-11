@@ -303,7 +303,7 @@ case ${BOARD} in
 		UBOOT_DEFCONFIG=radxa-nx5-rk3588s_defconfig
 		DTB=rk3588s-radxa-nx5.dtb
 		export ARCH=arm64
-		export CROSS_COMPILE=aarch64-none-linux-gnu-
+		export CROSS_COMPILE=aarch64-linux-gnu-
 		CHIP="rk3588s"
 		;;
 	"rk3588s-rock-5a")
@@ -311,7 +311,7 @@ case ${BOARD} in
 		UBOOT_DEFCONFIG=rock-5a-rk3588s_defconfig
 		DTB=rk3588s-rock-5a.dtb
 		export ARCH=arm64
-		export CROSS_COMPILE=aarch64-none-linux-gnu-
+		export CROSS_COMPILE=aarch64-linux-gnu-
 		CHIP="rk3588s"
 		;;
 	"rk3588-rock-5b")
@@ -319,7 +319,15 @@ case ${BOARD} in
 		UBOOT_DEFCONFIG=rock-5b-rk3588_defconfig
 		DTB=rk3588-rock-5b.dtb
 		export ARCH=arm64
-		export CROSS_COMPILE=aarch64-none-linux-gnu-
+		export CROSS_COMPILE=aarch64-linux-gnu-
+		CHIP="rk3588"
+		;;
+	"rk3588-nanopi6")
+		DEFCONFIG=nanopi6_linux_defconfig
+		UBOOT_DEFCONFIG=nanopi6_defconfig
+		DTB=rk3588-nanopi6*.dtb
+		export ARCH=arm64
+		export CROSS_COMPILE=aarch64-linux-gnu-
 		CHIP="rk3588"
 		;;
 	*)

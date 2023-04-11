@@ -17,7 +17,7 @@ finish() {
 trap finish ERR
 
 if [ $# != 1 ]; then
-	BOARD=rk3288-evb
+	BOARD=rk3588-nanopi6
 fi
 
 [ ! -d ${OUT} ] && mkdir ${OUT}
@@ -358,11 +358,11 @@ elif [ "${CHIP}" == "rk3568" ]; then
 	generate_spi_image
 elif [ "${CHIP}" == "rk3588s" ] || [ "${CHIP}" == "rk3588" ]; then
 	make ${UBOOT_DEFCONFIG}
-	make BL31=../rkbin/bin/rk35/rk3588_bl31_v1.34.elf spl/u-boot-spl.bin u-boot.dtb u-boot.itb
-	./tools/mkimage -n rk3588 -T rksd -d ../rkbin/bin/rk35/rk3588_ddr_lp4_2112MHz_lp5_2736MHz_v1.08.bin:spl/u-boot-spl.bin idbloader.img
+	make BL31=../rkbin/bin/rk35/rk3588_bl31_v1.36.elf spl/u-boot-spl.bin u-boot.dtb u-boot.itb
+	./tools/mkimage -n rk3588 -T rksd -d ../rkbin/bin/rk35/rk3588_ddr_lp4_2112MHz_lp5_2736MHz_v1.09.bin:spl/u-boot-spl.bin idbloader.img
 	cp u-boot.itb ${OUT}/u-boot/
 	cp idbloader.img ${OUT}/u-boot/
-	cp ../rkbin/bin/rk35/rk3588_spl_loader_v1.08.111.bin ${OUT}/u-boot
+	cp rk3588_spl_loader_v1.09.112.bin ${OUT}/u-boot
 	generate_spi_image
 fi
 
